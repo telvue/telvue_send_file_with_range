@@ -4,7 +4,7 @@ module SendFileWithRange
   class Railtie < ::Rails::Railtie
 
     initializer 'send_file_with_range.include' do
-      ActionController::DataStreaming.send :include, SendFileWithRange::ControllerExtension
+      ActionController::DataStreaming.send :prepend, SendFileWithRange::ControllerExtension
     end
 
   end
