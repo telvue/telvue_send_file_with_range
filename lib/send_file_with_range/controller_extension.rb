@@ -1,15 +1,11 @@
 module SendFileWithRange
   module ControllerExtension
 
-    def self.included(base)
-      base.alias_method_chain :send_file, :range_option
-    end
-
-    def send_file_with_range_option(path, options = {})
+    def send_file(path, options = {})
       if options[:range]
         send_file_with_range(path, options)
       else
-        send_file_without_range_option(path, options)
+        super path, options
       end
     end
 
